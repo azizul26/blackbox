@@ -1,0 +1,14 @@
+<widget id="com.example.hello" version="0.0.1">
+        <name>HelloWorld</name>
+        <description>
+            Learning Phonegap can be fun
+        </description>
+        <author email="tikishabudin@gmail.com" href="http://phonegap.com">
+            Apache Cordova Team
+        </author>
+        <content src="index.html" />
+        <access origin="*" />
+		
+		
+		<icon src="images/download.jpg" />
+    </widget>
