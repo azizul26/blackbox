@@ -1,13 +1,373 @@
 <!DOCTYPE html>
 <html>
-<head>
+	<head>
+		<title>Salary Calculator</title>
+
+		<style>
+		body{
+		padding:0px;
+        margin:0px;
+		}
+table{
+  width:290px;
+ 
+  }
+		
+  table#box-one {
+   
+    position:relative;
+    float:left;
+	margin-bottom:20px;
+	height:240px;
+	 border-right:2px solid grey;
+   }
+
+  table#box-two { 
+  
+   position:relative;
+    float:left;
+	
+  }
+  
+  th
+  {height:50px;
+  text-decoration:underline;
+  }
+
+.box-gradient {
+              margin :10px;
+             padding:50px 10px 10px 10px;
+              background:blue;
+	         position:absolute;
+			 
+			 
+			 width:600px;
+	         height:280px;
+	        
+			
+	         border-radius:10px;
+	         -moz-border-radius:10px;
+	         -webkit-border-radius:10px;
+	
+	        
+             background-color:#000;
+             background:-webkit-gradient(linear, 0% 1%, 0% 95%, from(rgba(255,255,255,0.9)), to(rgba(64,64,64,0.9)), color-stop(.8,rgba(64,64,64,0.25)),color-stop(.25,rgba(32,32,32,0.5)));
+             background:-moz-linear-gradient(top,bottom,from(rgba(255,255,255,0.9)),color-stop(80%, rgba(64,64,64,0.25)),color-stop(25%, rgba(32,32,32,0.5)),to(rgba(64,64,64,0.9)));
+			 
+			 -webkit-box-shadow: 0px 0px 10px 10px #666666;
+             -moz-box-shadow: 0px 0px 10px 10px #666666;
+              box-shadow: 0px 0px 10px 10px #666666;
+			 }
+	
+  
+  @media screen and (max-width:750px) and (orientation:portrait)
+  {
+  table#box-one {
+	
+	 clear: both;
+	
+   }
+  table#box-two { 
+   border-top:2px solid grey;
+   border-left:0px solid grey;
+    clear: both;
+    
+  }
+  
+.box-gradient {
+             padding:50px 10px 10px 10px;
+	         position:absolute;
+			 
+			width:320px;
+	         height:560px;
+	         
+	         border-radius:10px;
+	         -moz-border-radius:10px;
+	         -webkit-border-radius:10px;
+	
+	         background-color:#000;
+             background:-webkit-gradient(linear, 0% 1%, 0% 95%, from(rgba(255,255,255,0.9)), to(rgba(64,64,64,0.9)), color-stop(.8,rgba(64,64,64,0.25)),color-stop(.25,rgba(32,32,32,0.5)));
+             background:-moz-linear-gradient(top,bottom,from(rgba(255,255,255,0.9)),color-stop(80%, rgba(64,64,64,0.25)),color-stop(25%, rgba(32,32,32,0.5)),to(rgba(64,64,64,0.9)));
+
+			 -webkit-box-shadow: 0px 0px 10px 10px #666666;
+             -moz-box-shadow: 0px 0px 10px 10px #666666;
+              box-shadow: 0px 0px 10px 10px #666666;
+}
+  }
+
+  
+input[type='number']:invalid
+{
+border: solid 1px red;
+background:#FF8080;
+}
+input[type='number']:valid
+{
+border: solid 1px green;
+background:#66FF66;
+}
 
 
 
-</head>
-<body>
-<h1>welcome to phonGap</h1>
-thisis our first mobile apps
+select
+{
+color:#FFFFFF;
+width:150px;
+border-radius:5px;
+background:#666666;
+}
+select:hover
+{
 
-</body>
+background:Green;
+}
+
+
+select option
+{
+color:blue;
+width:150px;
+border-radius:5px;
+background:#DBFFA4;
+}
+
+input[type='text']
+{
+background:#DBFFA4;
+
+}
+#HoursWorked::-webkit-input-placeholder 
+{ color:#FF3333; }
+
+input[type="checkbox"]:checked
+{
+background:#00BF00;
+}
+
+
+
+
+
+
+
+</style>
+<script>
+
+			function calculateSalary() 
+			{
+				
+			
+			var stf = document.getElementById("position").value;
+			var wh = document.getElementById("HoursWorked").value;
+			
+				if (stf == "Staff")
+				{   
+				    if(wh > 40)
+					{
+					var ot = wh - 40;
+					var basicHours = wh - ot;
+					}
+					else
+					{
+					var ot = 0;
+					var basicHours = wh - ot;
+					}
+					
+					
+					var calcOt = 1.5 * ot;
+					var basicPay = basicHours * 6.5;
+					
+					var grossPay = calcOt + basicPay;
+					var taxes = grossPay * 0.06;
+					
+					var netPay = grossPay - taxes;
+					
+					outputGrossPay.value = grossPay;
+					outputTaxes.value = taxes;
+					outputNett.value = netPay;
+				}
+				else if (stf == "Super")
+				{
+					if(wh > 40)
+					{
+					var ot = wh - 40;
+					var basicHours = wh - ot;
+					}
+					else
+					{
+					var ot = 0;
+					var basicHours = wh - ot;
+					}
+					
+					var calcOt = 1.5 * ot;
+					var basicPay = basicHours * 7.5;
+					
+					var grossPay = calcOt + basicPay;
+					
+					if(document.getElementById("TaxCheck").checked == true)
+					{var taxes = 0; }
+					else
+					{var taxes = 0.06 * grossPay;}
+					
+					
+					
+					var netPay = grossPay - taxes;
+					
+					outputGrossPay.value = grossPay;
+					outputTaxes.value = taxes;
+					outputNett.value = netPay;
+				}
+				else 
+				{
+					if(wh > 40)
+					{
+					var ot = wh - 40;
+					var basicHours = wh - ot;
+					}
+					else
+					{
+					var ot = 0;
+					var basicHours = wh - ot;
+					}
+					var calcOt = 1.5 * ot;
+					var basicPay = basicHours * 15;
+					
+					var grossPay = calcOt + basicPay;
+					if(document.getElementById("TaxCheck").checked == true)
+					{var taxes = 0; }
+					else
+					{var taxes = 0.06 * grossPay;}
+					var netPay = grossPay - taxes;
+					
+					outputGrossPay.value = grossPay;
+					outputTaxes.value = taxes;
+					outputNett.value = netPay;
+				}
+				//table2.hidden = false;
+			}
+
+			function checkPosition()
+			{
+				var x = document.getElementById("position").value;
+				
+				if (x == "Super")
+				{
+				    document.getElementById("TaxCheck").checked = false;
+					document.getElementById("TaxCheck").disabled = false;
+				}
+				else if (x == "Manager")
+				{   
+				    document.getElementById("TaxCheck").checked = false;
+					document.getElementById("TaxCheck").disabled = false;
+				}
+				else if (x == "Staff")
+				{
+				    document.getElementById("TaxCheck").checked = false;
+					document.getElementById("TaxCheck").disabled = true;
+				}
+			}
+
+			function checkField()
+			{       
+			        if(document.getElementById("HoursWorked").value == "")
+					{
+					document.getElementById('btnCalc').disabled = true;
+					}
+					else{
+					document.getElementById('btnCalc').disabled = false;
+					}
+			}
+			
+		function isNumber(evt) 
+		{
+         evt = (evt) ? evt : window.event;
+         var charCode = (evt.which) ? evt.which : evt.keyCode;
+         if (charCode > 31 && (charCode < 48 || charCode > 57)) 
+		 {
+            return false;
+         }
+         return true;
+        }
+		</script>
+	</head>
+	
+	<body>
+	
+		
+		<div class="box-gradient">
+		
+	<form>
+	    <table id="box-one"  >
+		<tr><th>Calculate Salary</th></tr>
+		<tr><td valign="top">
+		<table id="table1">
+			<tr>
+				<td>Hours Worked  </td>
+				<td>:
+					<input type="number" id="HoursWorked" placeholder="worked hour" onchange="checkField()" onkeypress = "isNumber(this.value)" oninput="this.onchange();" required="required" />
+				</td>
+			</tr>
+			<tr>
+				<td>Position  </td>
+				<td>:
+					<select id="position" onchange="checkPosition()">
+					  <option value="Staff">Staff</option>
+					  <option value="Super">Super</option>
+					  <option value="Manager">Manager</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					&nbsp
+				</td>
+				<td>
+					<input type="checkbox" id="TaxCheck" disabled=true>Tax Exempt</input>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					&nbsp
+				</td>
+				<td>
+					<input type="button" id="btnCalc" value="Calculate" onclick="calculateSalary()" disabled=true/>
+				</td>
+			</tr>
+		</table>
+		
+		</td></tr></table>
+		
+		<table id="box-two" >
+		<tr><th>Result</th></tr>
+		<tr><td valign="top">
+		
+		<table id="table2" >
+			<tr>
+				<td>Gross Pay  </td>
+				<td>: RM
+					<input type="text" id="outputGrossPay" disabled="disabled" />
+				</td>
+			</tr>
+			<tr>
+				<td>(-) Tax  </td>
+				<td>: RM
+					<input type="text" id="outputTaxes"disabled="disabled" />
+				</td>
+			</tr>
+			<tr>
+				<td>Nett Pay </td>
+				<td>:  RM
+					<input type="text" id="outputNett" disabled="disabled" />
+				</td>
+			</tr>
+		</table>
+	    </td></tr></table>
+		</form>
+		</div>
+		
+			
+		
+
+	</body>
+
 </html>
