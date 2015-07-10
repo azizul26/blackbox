@@ -48,8 +48,9 @@ function onFail(message) {
   function initAlbum()
   {
   
-  navigator.camera.getPicture(onS, onF, { quality: 80,
-    destinationType: pictureSource.FILE_URI,
+    navigator.camera.getPicture(onS, onF, { quality: 80,
+    destinationType: destinationType.FILE_URI,
+	sourceType: source
     	});
   }
   
