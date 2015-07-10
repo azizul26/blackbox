@@ -23,33 +23,24 @@
 				  pictureSourseType:CAMERA  //photoLibrary,camera ,savePhotoAlbum
 				  };*/
    
-	navigator.camera.getPicture(onSuccess,onFail,{quality:80});
+	navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+    destinationType: Camera.DestinationType.DATA_URL
+});
+
   }
   
-  function onSuccess(imageURL)
-  {
-    document.getElementById("pic").src= imageURL;//"data:image/jpeg;base64,"
-  }
   
-  function onFail(message)
-  {
-  //message = reason failure;
-  }
+
+function onSuccess(imageData) {
+    var image = document.getElementById('myImage');
+    image.src = "data:image/jpeg;base64," + imageData;
+}
+
+function onFail(message) {
+    alert('Failed because: ' + message);
+}
   
-  function initCamera()
-  { /*var option = {quality:80,
-                  destinationType:DATA_URL,  //FILE_URI,NATIVE_URI
-                  allowEdit:true,
-				  encodingType:JPEG,
-				  pictureSourseType:CAMERA  //photoLibrary,camera ,savePhotoAlbum
-				  };*/
-   
-	navigator.camera.getPicture(onSuccess,onFail,{quality:80,
-                  destinationType:DATA_URL, 
-                  allowEdit:true,
-				  encodingType:JPEG,
-				  pictureSourseType:CAMERA });
-  }
+//-------------------------------------------------------------------------------
   
   
   function initAlbum()
@@ -83,7 +74,7 @@ border: solid 1px green;
 </style>
 </head>
 <body onload="pageLoaded()">
-
+<form>
 <table>
 <tr>
 <td><img src="" id="pic" height="200px" width="150px"></td>
@@ -95,17 +86,17 @@ border: solid 1px green;
 </tr>
 <tr>
 <td colspan="2">
-Name : <input id="name" type="text" required="required" /><br/><br/>
-Email : <input type="text" required="required" />
+Name : <input id="name" type="text" required="required" pattern="^[a-z ,.'-]+$" /><br/><br/>
+Email : <input id="email" type="text" required="required" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" />
 
 <br/>
 <br/><br/>
 <input type="submit" value="Register"  />
 </td>
 </tr>
+</table>
 
-
-
+</form>
 
 
 
