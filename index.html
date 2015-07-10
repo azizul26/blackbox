@@ -47,7 +47,8 @@ function onFail(message) {
   {
   
   navigator.camera.getPicture(onS, onF, { quality: 80,
-    destinationType: Camera.DestinationType.FILE_URI });
+    destinationType: Camera.DestinationType.FILE_URI,
+    sourceType: source	});
   }
   
 function onS(imageURI) {
