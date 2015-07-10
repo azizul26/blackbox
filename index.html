@@ -25,8 +25,12 @@
 				  pictureSourseType:CAMERA  //photoLibrary,camera ,savePhotoAlbum
 				  };*/
    
-	navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-    destinationType: destinationType.DATA_URL
+	navigator.camera.getPicture(onSuccess, onFail, { quality: 80,
+    destinationType: destinationType.DATA_URL,
+	sourceType : Camera.PictureSourceType.CAMERA,
+    allowEdit : true,
+    encodingType: Camera.EncodingType.JPEG,
+    saveToPhotoAlbum: true
 });
 
   }
@@ -50,7 +54,7 @@ function onFail(message) {
   
     navigator.camera.getPicture(onS, onF, { quality: 80,
     destinationType: destinationType.FILE_URI,
-	sourceType: pictureSource
+	sourceType : Camera.PictureSourceType.CAMERA
     	});
   }
   
