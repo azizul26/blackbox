@@ -4,7 +4,8 @@
 
 <script src="cordova.js"></script>
 <script>
-
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
  function pageLoaded()
  {
      document.addEventListener("deviceready",phoneReady,false);
@@ -12,7 +13,8 @@
  }
   function phoneReady()
   {
-  
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
   }
   
   function initCamera()
@@ -24,7 +26,7 @@
 				  };*/
    
 	navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-    destinationType: Camera.DestinationType.DATA_URL
+    destinationType: destinationType.DATA_URL
 });
 
   }
@@ -47,8 +49,8 @@ function onFail(message) {
   {
   
   navigator.camera.getPicture(onS, onF, { quality: 80,
-    destinationType: Camera.DestinationType.FILE_URI,
-    sourceType: source	});
+    destinationType: pictureSource.FILE_URI,
+    	});
   }
   
 function onS(imageURI) {
