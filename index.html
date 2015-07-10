@@ -16,28 +16,66 @@
   }
   
   function initCamera()
-  { var option = {quality:80,destinationType:DATA_URL,  //FILE_URI,NATIVE_URI
+  { /*var option = {quality:80,
+                  destinationType:DATA_URL,  //FILE_URI,NATIVE_URI
                   allowEdit:true,
 				  encodingType:JPEG,
 				  pictureSourseType:CAMERA  //photoLibrary,camera ,savePhotoAlbum
-				  };
-    navigator.camera.getPicture(onSuccess,onFail,{quality:80});
+				  };*/
+   
+	navigator.camera.getPicture(onSuccess,onFail,{quality:80});
   }
   
   function onSuccess(imageURL)
   {
-    document.getElementById("pic").src= "data:image/jpeg;base64,"imageURL;
+    document.getElementById("pic").src= imageURL;//"data:image/jpeg;base64,"
   }
+  
   function onFail(message)
   {
   //message = reason failure;
   }
 
 </script>
+
+<style>
+input[type="text"]:invalid
+{
+border: solid 1px red;
+
+}
+input[type="text"]:valid
+{
+border: solid 1px green;
+}
+</style>
 </head>
 <body onload="pageLoaded()">
-<input type="button" value="Start Camera" onclick="initCamera()" />
-<img src="" id="pic" height="400px">
+
+<table>
+<tr>
+<td><img src="" id="pic" height="200px" width="150px"></td>
+
+<td  >
+<input type="button" value="Take Picture" onclick="initCamera()" /></br></br>
+<input type="button" value="Take album" onclick="initCamera()" />
+</td>
+</tr>
+<tr>
+<td colspan="2">
+Name : <input id="name" type="text" required="required" /><br/><br/>
+Email : <input type="text" required="required" />
+
+<br/>
+<br/><br/>
+<input type="submit" value="Register"  />
+</td>
+</tr>
+
+
+
+
+
 
 </body>
 </html>
