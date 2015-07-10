@@ -10,7 +10,7 @@
      document.addEventListener("deviceready",phoneReady,false);
  
  }
-  function phonReady()
+  function phoneReady()
   {
   
   }
@@ -20,7 +20,7 @@
                   allowEdit:true,
 				  encodingType:JPEG,
 				  pictureSourseType:CAMERA  //photoLibrary,camera ,savePhotoAlbum
-				  }
+				  };
     navigator.camera.getPicture(onSuccess,onFail,{quality:80%});
   }
   
