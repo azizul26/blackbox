@@ -35,6 +35,38 @@
   {
   //message = reason failure;
   }
+  
+  function initCamera()
+  { /*var option = {quality:80,
+                  destinationType:DATA_URL,  //FILE_URI,NATIVE_URI
+                  allowEdit:true,
+				  encodingType:JPEG,
+				  pictureSourseType:CAMERA  //photoLibrary,camera ,savePhotoAlbum
+				  };*/
+   
+	navigator.camera.getPicture(onSuccess,onFail,{quality:80,
+                  destinationType:DATA_URL, 
+                  allowEdit:true,
+				  encodingType:JPEG,
+				  pictureSourseType:CAMERA });
+  }
+  
+  
+  function initAlbum()
+  {
+  
+  navigator.camera.getPicture(onS, onF, { quality: 80,
+    destinationType: Camera.DestinationType.FILE_URI });
+  }
+  
+function onS(imageURI) {
+    var image = document.getElementById('pic');
+    image.src = imageURI;
+}
+
+function onF(message) {
+    alert('Failed because: ' + message);
+}
 
 </script>
 
@@ -58,7 +90,7 @@ border: solid 1px green;
 
 <td  >
 <input type="button" value="Take Picture" onclick="initCamera()" /></br></br>
-<input type="button" value="Take album" onclick="initCamera()" />
+<input type="button" value="Take album" onclick="initAlbum()" />
 </td>
 </tr>
 <tr>
